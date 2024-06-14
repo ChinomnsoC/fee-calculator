@@ -1,5 +1,15 @@
 # fee-calculator
 
+We want to bill customers for all days users were active in the month (including any activation and deactivation dates, since the user had some access on those days).
+• We do need to support historical calculations (previous dates)
+• We only charge whole cents
+Notes
+Here's an idea of how we might go about this:
+1. Calculate a daily rate for the subscription tier
+2. For each day of the month, identify which users had an active subscription on that day
+3. Multiply the number of active users for the day by the daily rate to calculate the total for the day
+4. Return the running total for the month at the end
+
 export interface User {
   id: number;
   name: string;
